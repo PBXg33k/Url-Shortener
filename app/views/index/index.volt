@@ -3,7 +3,7 @@
 <h1>{{tr(title)}}</h1>
         <p class="lead">
             {{ tr(have_fun_using)}} :)<br />
-            <a href="{{url(token)}}" target="_blank">{{url(token)}}</a>
+            <a href="{{url(tokenLink)}}" target="_blank">{{url(tokenLink)}}</a>
         </p>
 {% else %}
     <h1>{{tr(title)}}</h1>

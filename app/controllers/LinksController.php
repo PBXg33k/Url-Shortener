@@ -3,7 +3,7 @@
 use \Phalcon\Tag as Tag;
 
 class LinksController extends ControllerBase
-    {
+{
 
     function indexAction()
     {
@@ -11,7 +11,7 @@ class LinksController extends ControllerBase
     }
 
     public function searchAction()
-{
+    {
 
         $numberPage = 1;
         if ($this->request->isPost()) {
@@ -40,7 +40,7 @@ class LinksController extends ControllerBase
             "data" => $links,
             "limit"=> 10,
             "page" => $numberPage
-        ));
+            ));
         $page = $paginator->getPaginate();
 
         $this->view->setVar("page", $page);
@@ -49,7 +49,7 @@ class LinksController extends ControllerBase
 
     public function editAction($id)
     {
-return true;
+        return true;
         $request = $this->request;
         if (!$request->isPost()) {
 
@@ -61,7 +61,7 @@ return true;
                 return $this->dispatcher->forward(array("controller" => "links", "action" => "index"));
             }
             $this->view->setVar("id", $links->id);
-        
+            
             Tag::displayTo("id", $links->id);
             Tag::displayTo("token", $links->token);
             Tag::displayTo("longurl", $links->longurl);
@@ -75,9 +75,9 @@ return true;
         
         //$check = Counts::findFirst('visitor_ip' => $this->getUserIP(), 'links_id' => $link->id));
         $check = Counts::findFirst(array('visitor_ip=:visitor_ip: AND links_id=:links_id:',
-                                         'bind' => array('visitor_ip' => $this->getUserIP(), 
-                                                         'links_id' => $link->id)
-                                                ));
+           'bind' => array('visitor_ip' => $this->getUserIP(), 
+               'links_id' => $link->id)
+           ));
         if (!$check) {
             $counts = new Counts();
             $counts->links_id = $link->id;
@@ -128,6 +128,7 @@ return true;
             } else {
                 $this->flash->success("links was created successfully");
                 $this->view->token = $token;
+                $this->view->tokenLink = 'd'.$token;
                 return $this->dispatcher->forward(array("controller" => "index", "action" => "index"));
             }
         }
