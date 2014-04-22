@@ -5,7 +5,7 @@ return new \Phalcon\Config(array(
 		'adapter'  => 'Mysql',
 		'host'     => 'localhost',
 		'username' => 'root',
-		'password' => 'pass',
+		'password' => '',
 		'name'     => 'link',
 	),
 	'application' => array(
@@ -14,7 +14,7 @@ return new \Phalcon\Config(array(
 		'viewsDir'       => __DIR__ . '/../../app/views/',
 		'pluginsDir'     => __DIR__ . '/../../app/plugins/',
 		'libraryDir'     => __DIR__ . '/../../app/library/',
-		'baseUri'        => '/',
+		'baseUri'        => "http" . (($_SERVER['SERVER_PORT']==443) ? "s://" : "://") . $_SERVER['HTTP_HOST'] .'/u/',
                 'domain'        => 'link',
 	),
 	'models' => array(

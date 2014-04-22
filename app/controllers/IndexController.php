@@ -8,6 +8,9 @@ class IndexController extends ControllerBase
         if (!$this->view->token) {
             $this->view->token = "";
         }
+        if(!$this->view->tokenLink) {
+        	$this->view->tokenLink = "";
+        }
         
     }
 
