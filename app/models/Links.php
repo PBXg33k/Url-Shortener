@@ -28,6 +28,12 @@ class Links extends \Phalcon\Mvc\Model
      */
     public $visitor_count;
 
+    /**
+     * @var string
+     * 
+     */
+    public $password;
+
 
     /**
      * Initializer method for model.

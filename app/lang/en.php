@@ -13,3 +13,5 @@ $messages['nav_about'] = 'About';
 $messages['nav_contact'] = 'Contact';
 $messages['nav_title'] = 'u.Dolap.co';
 $messages['redirecting'] = 'Redirecting';
+$messages['checkbox_password_protect'] = 'Password protect';
+$messages['password'] = "Password";

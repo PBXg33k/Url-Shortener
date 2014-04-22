@@ -11,7 +11,16 @@
         <p class="lead">
             <input class="form-control input-large" name="longurl" type="text" placeholder="{{url()}}" />
         </p>
-        <p><input type="submit" class="btn btn-large btn-success" value="{{tr(shorten_btn)}} » " /></p>
+        <p>
+            <input type="checkbox" name="checkbox-password">
+            <label for="checkbox-password">{{tr(checkbox_password_protect)}}</label>
+        </p>
+        <p>
+            <input class="form-control input-large" name="password" type="text" placeholder="{{tr(password)}}" style="display:none" />
+        </p>
+        <p>
+            <input type="submit" class="btn btn-large btn-success" value="{{tr(shorten_btn)}} » " />
+        </p>
     </form>
     {% endif %}
 </div>
