@@ -15,3 +15,7 @@ $messages['nav_title'] = 'u.Dolap.co';
 $messages['redirecting'] = 'Redirecting';
 $messages['checkbox_password_protect'] = 'Password protect';
 $messages['password'] = "Password";
+$messages['password_protected_title'] = 'Password protected link';
+$messages['password_protected_body'] = 'This URI is password protected. Enter the correct password to continue.';
+$messages['unlock_btn'] = 'Unlock';
+$messages['incorrect_password'] = 'Incorrect password';

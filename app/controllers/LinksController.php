@@ -72,31 +72,46 @@ class LinksController extends ControllerBase
     public function redirectAction() {
         $slug = $this->dispatcher->getParam("slug");
         $link = Links::findFirst('token="'.$slug.'"');
-        
-        //$check = Counts::findFirst('visitor_ip' => $this->getUserIP(), 'links_id' => $link->id));
-        $check = Counts::findFirst(array('visitor_ip=:visitor_ip: AND links_id=:links_id:',
-           'bind' => array('visitor_ip' => $this->getUserIP(), 
-               'links_id' => $link->id)
-           ));
-        if (!$check) {
-            $counts = new Counts();
-            $counts->links_id = $link->id;
-            $counts->value = 1;
-            $counts->visit_date = date("Y-m-d H:i:s");
-            $counts->visitor_ip = $this->getUserIP();
-            $counts->save();
-            unset($counts);
-            
-            $counts_total = count(Counts::find(array("links_id" => $link->id)));
+
+        // Check if $link has a password
+        if( $link->password != null && ( !$this->request->isPost() || !$this->request->hasPost('password') ) ) {
+            // $link has a password and user hasn't post anything yet, so let's show them a password prompt
+            $this->view->setVar('slug', 'd'.$slug);
+            $this->view->pick('index/password');
+        } else {
+            // Link has a password but user did post something
+            if($this->request->isPost() && $this->request->hasPost('password')) {
+                $password = sha1($this->request->getPost('password'));
+                if($password != $link->password) {
+                    $this->view->setVar('error', $this->translate->query('incorrect_password'));
+                    $this->view->setVar('slug', 'd'.$slug);
+                    $this->view->pick('index/password');
+                    return;
+                }
+            }
+            $check = Counts::findFirst(array('visitor_ip=:visitor_ip: AND links_id=:links_id:',
+               'bind' => array('visitor_ip' => $this->getUserIP(), 
+                   'links_id' => $link->id)
+               ));
+            if (!$check) {
+                $counts = new Counts();
+                $counts->links_id = $link->id;
+                $counts->value = 1;
+                $counts->visit_date = date("Y-m-d H:i:s");
+                $counts->visitor_ip = $this->getUserIP();
+                $counts->save();
+                unset($counts);
+                
+                $counts_total = count(Counts::find(array("links_id" => $link->id)));
+            }
+
+            $link->visitor_count = $counts_total;
+            $link->save();
+            $this->view->linkurl = $link->longurl;
+
+            $response = new \Phalcon\Http\Response();
+            return $response->redirect($link->longurl, true);
         }
-
-        $link->visitor_count = $counts_total;
-        $link->save();
-        $this->view->linkurl = $link->longurl;
-
-        $response = new \Phalcon\Http\Response();
-        return $response->redirect($link->longurl, true);
-
     }
     
     public function createAction()

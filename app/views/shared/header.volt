@@ -13,6 +13,7 @@
 
         <!-- Custom styles for this template -->
         <link href="{{url("css/jumbotron-narrow.css")}}" rel="stylesheet">
+        <link href="{{url("css/style.css")}}" rel="stylesheet">
 
         <!-- jQuery v2.1.0 -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
