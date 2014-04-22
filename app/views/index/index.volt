@@ -7,12 +7,12 @@
         </p>
 {% else %}
     <h1>{{tr(title)}}</h1>
-    <form method="post" autocomplete="off" action="{{ url('links/create') }}">
+    <form method="post" id="new-link" autocomplete="off" action="{{ url('links/create') }}">
         <p class="lead">
             <input class="form-control input-large" name="longurl" type="text" placeholder="{{url()}}" />
         </p>
         <p>
-            <input type="checkbox" name="checkbox-password">
+            <input type="checkbox" id="checkbox-password" name="checkbox-password">
             <label for="checkbox-password">{{tr(checkbox_password_protect)}}</label>
         </p>
         <p>

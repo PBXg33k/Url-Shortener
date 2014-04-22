@@ -101,7 +101,6 @@ class LinksController extends ControllerBase
     
     public function createAction()
     {
-
         if (!$this->request->isPost()) {
             return $this->dispatcher->forward(array("controller" => "index", "action" => "index"));
         }
@@ -118,6 +117,12 @@ class LinksController extends ControllerBase
             $links = new Links();
             $links->token = $token;
             $links->longurl = trim($this->request->getPost("longurl"));
+
+            // Check if user has checked the password checkbox
+            if($this->request->hasPost('checkbox-password')) {
+                $links->password = sha1($this->request->getPost("password"));
+            }
+
             $links->visitor_count = 0;
             if (!$links->save()) {
                 foreach ($links->getMessages() as $message) {
