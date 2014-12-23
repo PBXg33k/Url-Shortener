@@ -15,7 +15,9 @@ To-Do
 * Statistics
 * User Login
 * API
-* Password protection for shortened link
+* Custom URL (for registered users)
+* Link management
+* Password protection for shortened link (done, testing)
 
 
 NOTE
