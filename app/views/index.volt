@@ -7,7 +7,7 @@
      {{content()}}
 
       <div class="footer">
-        <p>&copy; Company 2013. Allrights Reserved Dolap.co</p>
+        <p>&copy; Oguzhan Uysal 2014. All rights Reserved</p>
         <p><a href="http://phalconphp.com">Powered By Phalcon</a></p>
       </div>
 
