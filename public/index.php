@@ -5,12 +5,35 @@ error_reporting(E_ALL);
 
 use Phalcon\Mvc\View\Engine\Volt;
 
+/**
+ * Application bootstrap
+ * 
+ * @author Oguzhan Uysal <development.php@oguzhanuysal.eu>
+ * @since 1.0.1 Splitted several configurations based on environments
+ */
+
 try {
+    /**
+     * Get current environment
+     */
+    require_once(__DIR__ . "/../app/config/environment.php");
 
     /**
      * Read the configuration
      */
     $config = include(__DIR__ . "/../app/config/config.php");
+
+    /**
+     * Load environment config file
+     * 
+     * @todo Replace this with something that does (minimal) error checking
+     */
+    $environment_config = include(sprintf("%s/../app/config/environments/%s.php", __DIR__, ENVIRONMENT));
+
+    /**
+     * Merge both configs
+     */
+    $config->merge($environment_config);
 
     $loader = new \Phalcon\Loader();
 
