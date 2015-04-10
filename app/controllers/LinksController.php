@@ -102,7 +102,7 @@ class LinksController extends ControllerBase
                 $counts->save();
                 unset($counts);
                 
-                $counts_total = count(Counts::find(array("links_id" => $link->id)));
+                $counts_total = count(Counts::find('links_id = '.$link->id));
             }
 
             $link->visitor_count = $counts_total;
