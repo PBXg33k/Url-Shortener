@@ -10,6 +10,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Admin interface
 - Logging IP addresses of those who created shortlinks
 ### Changed
+- New look!
+- Overhauled several internal code (improvements)
 - Improved link generator
 
 ## TODO
