@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * ControllerBase class
+ * 
+ * This controller contains shared logic which can be used by all descendants of this class.
+ * See this class as a half assed abstract class
+ * 
+ * @author Oguzhan Uysal <development.php@oguzhanuysal.eu>
+ * @package g33kSoft\Shortlinker
+ * @version 1.0.1
+ * 
+ * @since 1.0.1 CloudFlare support added. When using CLoudFlare real user IP will be returned.
+ */
 class ControllerBase extends \Phalcon\Mvc\Controller {
 
     public function getUserIP() {

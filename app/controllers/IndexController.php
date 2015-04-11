@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * IndexController
+ * 
+ * @author Oguzhan Uysal <development.php@oguzhanuysal.eu>
+ * @package default
+ * @uses ControllerBase
+ * 
+ * @version 1.0.0
+ */
 class IndexController extends ControllerBase
 {
 

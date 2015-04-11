@@ -2,8 +2,17 @@
 
 use \Phalcon\Tag as Tag;
 
+/**
+ * CountsController
+ * 
+ * @author Oguzhan Uysal <development.php@oguzhanuysal.eu>
+ * @package g33ksoft\Shortlinker
+ * @uses ControllerBase
+ * 
+ * @version 1.0.0
+ */
 class CountsController extends ControllerBase
-    {
+{
 
     function indexAction()
     {
@@ -11,7 +20,7 @@ class CountsController extends ControllerBase
     }
 
     public function searchAction()
-{
+    {
 
         $numberPage = 1;
         if ($this->request->isPost()) {
@@ -40,7 +49,7 @@ class CountsController extends ControllerBase
             "data" => $counts,
             "limit"=> 10,
             "page" => $numberPage
-        ));
+            ));
         $page = $paginator->getPaginate();
 
         $this->view->setVar("page", $page);
@@ -65,7 +74,7 @@ class CountsController extends ControllerBase
                 return $this->dispatcher->forward(array("controller" => "counts", "action" => "index"));
             }
             $this->view->setVar("id", $counts->id);
-        
+
             Tag::displayTo("id", $counts->id);
             Tag::displayTo("links_id", $counts->links_id);
             Tag::displayTo("value", $counts->value);

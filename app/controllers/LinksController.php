@@ -2,6 +2,15 @@
 
 use \Phalcon\Tag as Tag;
 
+/**
+ * LinksController
+ * 
+ * @author Oguzhan Uysal <development.php@oguzhanuysal.eu>
+ * @package default
+ * @uses ControllerBase
+ * 
+ * @version 1.0.0
+ */
 class LinksController extends ControllerBase
 {
 
